@@ -12,7 +12,6 @@ class PipeSystem:
 
     # Computational parameters
     lensection = 0.001
-    Qmax = 0.0002
     nq = 1000
 
     # Physical properties
