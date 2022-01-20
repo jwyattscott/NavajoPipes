@@ -104,7 +104,7 @@ class PipeSystem:
     # The pump curve is a function
     def addPump(self,loc,curve,Qmax):
         self.Qmax = Qmax
-        self.dQ = Qmax / 1000
+        self.dQ = Qmax / self.nq
         self.pcurve = curve
         self.pospump = loc
 
