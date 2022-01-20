@@ -13,7 +13,7 @@ class PipeSystem:
     # Computational parameters
     lensection = 0.001
     Qmax = 0.0002
-    dQ = Qmax / 1000
+    nq = 1000
 
     # Physical properties
     rho = 998 # density of water in SI units
@@ -41,6 +41,8 @@ class PipeSystem:
     def __init__(self,material,diameter,dtank):
 
         self.dtank = dtank
+        self.Qmax = 0
+        self.dQ = 0
 
         # Pipe characteristics
         self.C = self.Crough[material]
@@ -100,7 +102,9 @@ class PipeSystem:
             self.KL = np.hstack((self.KL[:(len(self.KL)-1)],newKL))
 
     # The pump curve is a function
-    def addPump(self,loc,curve):
+    def addPump(self,loc,curve,Qmax):
+        self.Qmax = Qmax
+        self.dQ = Qmax / 1000
         self.pcurve = curve
         self.pospump = loc
 
